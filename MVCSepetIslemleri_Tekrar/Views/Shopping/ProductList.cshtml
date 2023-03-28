@@ -1,0 +1,33 @@
+﻿@model ListProductPageVM
+
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<h1>Sepetinizi gözlemlemek icin lütfen @Html.ActionLink("tıklayınız", "CartPage")</h1>
+
+
+
+
+<h3 style="color:#0094ff">@TempData["mesaj"]</h3>
+
+<table class="table table-hover">
+    <tr>
+
+        <th>Isim</th>
+        <th>Fiyat</th>
+        <th>Sepet işlemleri</th>
+    </tr>
+
+    @foreach (ProductVM item in Model.Products)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.UnitPrice</td>
+            <td>@Html.ActionLink("Sepete ekle", "AddToCart", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+        </tr>
+
+    }
+</table>
+
